@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+/* Your custom styles below */
+// @layer utilities {
+//   .animate-fade-in {
+//     animation: fadeIn 0.5s ease-in;
+//   }
+
+//   @keyframes fadeIn {
+//     from {
+//       opacity: 0;
+//       transform: translateY(20px);
+//     }
+//     to {
+//       opacity: 1;
+//       transform: translateY(0);
+//     }
+//   }
+// }
+
+@theme {
+  --color-love-100: oklch(96.94% 0.0151 12.42);
+  --color-love-200: oklch(90.24% 0.05267565847581345 6.454092761247338);
+  --color-love-300: oklch(84.22% 0.09 7.04);
+  --color-love-400: oklch(77.52% 0.13617926410079728 9.335784730427246);
+  --color-love-500: oklch(67.85% 0.21307316039404187 14.71918583276456);
+  --color-love-600: oklch(63.83% 0.24795862398208462 21.14712804768101);
+}

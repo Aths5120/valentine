@@ -1,0 +1,37 @@
+<header class="bg-gradient-to-r from-love-400 to-love-600 text-white shadow-lg">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <a routerLink="/" class="flex items-center space-x-2 group">
+        <span class="text-2xl">❤️</span>
+        <span
+          class="text-2xl font-bold group-hover:text-love-200 transition-colors"
+        >
+          Love Notes
+        </span>
+      </a>
+      <nav class="flex items-center space-x-6">
+        <a
+          routerLink="/"
+          routerLinkActive="text-love-200"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
+        >
+          Home
+        </a>
+        <a
+          routerLink="/gallery"
+          routerLinkActive="text-love-200"
+          class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
+        >
+          Gallery
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen bg-gradient-to-b from-love-100 to-white pb-12">
+  <div class="container mx-auto px-4">
+    <router-outlet></router-outlet>
+  </div>
+</main>
