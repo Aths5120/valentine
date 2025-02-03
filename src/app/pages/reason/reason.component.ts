@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Reason } from '../../model/reason';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ReasonService } from '../../service/reason.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reason',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './reason.component.html',
   styleUrl: './reason.component.scss',
 })

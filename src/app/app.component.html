@@ -1,4 +1,6 @@
-<header class="bg-gradient-to-r from-love-400 to-love-600 text-white shadow-lg">
+<header
+  class="z-50 bg-gradient-to-r from-love-400 to-love-600 text-white shadow-lg"
+>
   <div class="container mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <a routerLink="/" class="flex items-center space-x-2 group">
@@ -9,29 +11,53 @@
           Love Notes
         </span>
       </a>
-      <nav class="flex items-center space-x-6">
-        <a
-          routerLink="/"
-          routerLinkActive="text-love-200"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
-        >
-          Home
-        </a>
-        <a
-          routerLink="/gallery"
-          routerLinkActive="text-love-200"
-          class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
-        >
-          Gallery
-        </a>
-      </nav>
+
+      <div class="flex items-center space-x-6">
+        <nav class="flex items-center space-x-6">
+          <a
+            routerLink="/"
+            routerLinkActive="text-love-200"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
+          >
+            Home
+          </a>
+          <a
+            routerLink="/gallery"
+            routerLinkActive="text-love-200"
+            class="py-2 px-4 hover:text-love-200 transition-colors text-lg"
+          >
+            Gallery
+          </a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button
+            *ngIf="isPlaying$ | async"
+            (click)="toggleMute()"
+            class="p-2 hover:text-love-200 transition-colors"
+          >
+            <span class="text-2xl">{{ (isMuted$ | async) ? "🔇" : "🔊" }}</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
-<main class="min-h-screen bg-gradient-to-b from-love-100 to-white pb-12">
+<main class="min-h-full bg-gradient-to-b from-love-100 to-white">
   <div class="container mx-auto px-4">
     <router-outlet></router-outlet>
+  </div>
+  <div
+    *ngIf="!(isPlaying$ | async)"
+    class="absolute h-full w-full top-0 left-0 grid place-items-center z-50 bg-love-300/50"
+  >
+    <button
+      (click)="playMusic()"
+      class="p-4 text-white transition-colors rounded-full duration-200 cursor-pointer bg-love-300"
+    >
+      <span class="text-2xl">▶️ Play Music</span>
+    </button>
   </div>
 </main>

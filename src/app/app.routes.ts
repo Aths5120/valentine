@@ -6,10 +6,13 @@ import { reasonGuard } from './guard/reason.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'gallery', component: GalleryComponent },
+  {
+    path: 'gallery',
+    component: GalleryComponent,
+  },
   {
     path: 'reason/:id',
     component: ReasonComponent,
-    canActivate: [reasonGuard],
+    // canActivate: [reasonGuard],
   },
 ];

@@ -19,6 +19,28 @@
 //   }
 // }
 
+@keyframes heartFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -80px) scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -120px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.heart-trail {
+  animation: heartFloat 1.5s ease-out forwards;
+  color: #ff4d6d; /* Matches your love-500 color */
+  text-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
+  will-change: transform, opacity;
+}
+
 @theme {
   --color-love-100: oklch(96.94% 0.0151 12.42);
   --color-love-200: oklch(90.24% 0.05267565847581345 6.454092761247338);

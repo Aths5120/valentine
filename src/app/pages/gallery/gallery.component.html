@@ -1,23 +1,19 @@
-<div class="pt-8 md:pt-12">
+<div class="pt-1 md:pt-12">
   <h2 class="text-4xl md:text-5xl text-center mb-12 text-love-500 font-bold">
     Our Beautiful Memories
   </h2>
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
-    <div
-      *ngFor="let photo of photos"
-      class="group relative transform transition-transform duration-300 hover:scale-105"
-    >
-      <div class="aspect-w-1 aspect-h-1">
+    <div *ngFor="let photo of photos" class="group relative">
+      <div
+        class="aspect-w-1 aspect-h-1 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+        (click)="openModal(photo)"
+      >
         <img
           [src]="photo"
           class="w-full h-full object-cover rounded-xl shadow-lg"
-          alt="Us together"
         />
-        <div
-          class="absolute inset-0 bg-love-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-xl"
-        ></div>
       </div>
     </div>
   </div>
@@ -25,9 +21,74 @@
   <div class="text-center mt-12">
     <button
       routerLink="/"
-      class="px-8 py-4 bg-love-500 text-white rounded-full text-lg hover:bg-love-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
+      class="cursor-pointer px-8 py-4 bg-love-500 text-white rounded-full text-lg hover:bg-love-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
     >
       Back to Love Notes ❤️
     </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  *ngIf="selectedPhoto"
+  class="fixed inset-0 bg-love-300/50 flex items-center justify-center z-50 p-4 md:p-8"
+  (click)="closeModal()"
+>
+  <!-- Falling Hearts -->
+  <div
+    class="fixed inset-x-0 -top-10 h-full pointer-events-none overflow-hidden"
+  >
+    <div
+      *ngFor="let heart of hearts"
+      class="absolute animate-fall heart"
+      [ngStyle]="{
+        left: heart.left,
+        'animation-duration': heart.animationDuration,
+        'animation-delay': heart.delay,
+        width: heart.size,
+        height: heart.size
+      }"
+    >
+      ❤️
+    </div>
+  </div>
+
+  <!-- photo -->
+  <div
+    class="max-w-4xl w-full h-full max-h-[90vh] flex flex-col items-center justify-center"
+  >
+    <div
+      class="relative bg-white rounded-lg p-8"
+      (click)="$event.stopPropagation()"
+    >
+      <!-- Close button -->
+      <button
+        (click)="closeModal()"
+        class="absolute top-2 right-2 text-black hover:text-gray-300 z-10 cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <!-- Modal content -->
+      <div class="relative max-h-[75vh] overflow-hidden rounded-lg">
+        <img
+          [src]="selectedPhoto"
+          class="w-auto h-auto max-w-full max-h-[75vh] object-contain mx-auto"
+        />
+      </div>
+    </div>
   </div>
 </div>
